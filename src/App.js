@@ -24,10 +24,10 @@ function App() {
                 <span className="slider round"></span>
             </label>  
         </div>
-      <Routes>
-        <Route path="/weatherForecast" exactly element={<Home />} />
-        <Route path="/weatherForecast/favorite" element={<Fav />} />
-        <Route path="/weatherForecast/*" element={<Home />} />
+      <Routes basename='/weatherForecast'>
+        <Route path="/" exactly element={<Home />} />
+        <Route path="/favorite" element={<Fav />} />
+        <Route path="/*" element={<Home />} />
       </Routes>
     </div>
   );
