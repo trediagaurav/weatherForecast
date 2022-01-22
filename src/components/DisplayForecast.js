@@ -6,6 +6,10 @@ import moment from 'moment';
 
 export default function DisplayForecast(props) {
     const responseInfo = useGetforecastClimateQuery(props.data)
+    if (responseInfo.isSuccess) {
+        console.log("forecast", responseInfo)
+    }
+
 
     if (responseInfo.isSuccess) {
         const forecastData = responseInfo.data.DailyForecasts

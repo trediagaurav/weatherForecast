@@ -6,12 +6,16 @@ import DisplayForecast from './DisplayForecast';
 function Weather(props) {
     const [favorite, setFavorite] = useState([]);
     const responseInfo = useGetCurrentClimateQuery(props.data)
+    if (responseInfo.isSuccess) {
+        console.log("currentClimate", responseInfo)
+    }
 
     useEffect(() => {
+        console.log("useEffect weather")
         if (favorite.length) {
             localStorage.setItem('climate', JSON.stringify(favorite));
         }
-    }, [favorite, props])
+    }, [favorite])
 
     if (responseInfo.isSuccess) {
         const currentData = responseInfo.data[0]

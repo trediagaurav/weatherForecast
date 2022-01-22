@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useCallback } from 'react';
 import { Form } from 'react-bootstrap';
 import { IoSearch } from 'react-icons/io5';
 import Weather from './Weather';
@@ -13,6 +13,10 @@ export default function Search() {
     const [suggestion, setsuggestion] = useState([])
     const responseInfo = useGetAllPostQuery()
     const cityData = responseInfo.data
+    if (responseInfo.isSuccess) {
+        console.log("citydata fetch", cityData)
+    }
+    
 
     const handleChange = async (e) => {
         setcity(e.target.value)
@@ -27,10 +31,7 @@ export default function Search() {
             handleChange()
         }
     }
-
-    useEffect(() => {
-    }, [value, key, responseInfo]);
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!city.length) {
