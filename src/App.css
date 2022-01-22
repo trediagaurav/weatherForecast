@@ -1,0 +1,29 @@
+.App {
+  margin: 20px;
+}
+.link{
+  color: black;
+  text-decoration: none;
+  margin: 12px;
+}
+.search{
+  position: absolute;
+  left: 24px;
+}
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+	background-color: var(--neutral-6);
+	scrollbar-width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #adaaaaa6;
+	scrollbar-color: #adaaaaa6;
+	border-radius: 4px;
+}
+
+/* For Firefox */
+:root * {
+	scrollbar-width: thin;
+}

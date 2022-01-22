@@ -1,0 +1,16 @@
+.card{
+	box-shadow: 0px 0px 12px var(--border);
+	border-radius: 8px;
+	height: auto !important;
+	background-color: var(--form-bg);
+}
+.fav{
+	height: calc(100vh - 65px);
+	background-color: var(--background);
+}
+.title{
+	color: var(--text-primary);
+}
+.condition{
+	color: var(--text-secondary);
+}

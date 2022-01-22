@@ -1,0 +1,7 @@
+.link{
+    color: var(--text-secondary);
+}
+.nav{
+    background-color: var(--form-bg);
+    box-shadow: 0px 0px 12px var(--border);
+}
