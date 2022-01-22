@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { store } from './app/store'
 
 ReactDOM.render(
-  <HashRouter basename='/weatherForecast'>
+  <HashRouter>
       <Provider store={store}>
         <App />
       </Provider>
