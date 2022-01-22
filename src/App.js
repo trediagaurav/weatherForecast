@@ -25,9 +25,9 @@ function App() {
             </label>  
         </div>
       <Routes>
-        <Route path="https://trediagaurav.github.io/weatherForecast/" exactly element={<Home />} />
-        <Route path="https://trediagaurav.github.io/weatherForecast/favorite" element={<Fav />} />
-        <Route path="https://trediagaurav.github.io/weatherForecast/*" element={<Home />} />
+        <Route path="/weatherForecast" exactly element={<Home />} />
+        <Route path="/weatherForecast/favorite" element={<Fav />} />
+        <Route path="/weatherForecast/*" element={<Home />} />
       </Routes>
     </div>
   );
