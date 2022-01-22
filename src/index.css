@@ -75,6 +75,5 @@ input[type=checkbox]:checked {
   padding-left: 8px;
 }
 .main{
-  height: 100vh;
   background-color: var(--background);
 }

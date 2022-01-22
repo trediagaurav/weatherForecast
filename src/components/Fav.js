@@ -22,7 +22,7 @@ export default function Fav() {
     if (data.length) {
         return (
             <div className='p-5 fav'>
-                <div className='d-flex justify-content-left' style={{ flexWrap: "wrap" }}>{
+                <div className='d-flex justify-content-left fav-col' style={{ flexWrap: "wrap" }}>{
                     data.map((item, i) => {
                         return (
                             <Card style={{ width: '12rem', height: '15em', margin: '10px', textAlign: "center" }} key={i}>
