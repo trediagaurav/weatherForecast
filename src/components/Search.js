@@ -1,4 +1,4 @@
-import { useState, useEffect,useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Form } from 'react-bootstrap';
 import { IoSearch } from 'react-icons/io5';
 import Weather from './Weather';
@@ -13,7 +13,7 @@ export default function Search() {
     const [suggestion, setsuggestion] = useState([])
     const responseInfo = useGetAllPostQuery()
     const cityData = responseInfo.data
-   
+
 
     const handleChange = async (e) => {
         setcity(e.target.value)
@@ -28,7 +28,7 @@ export default function Search() {
             handleChange()
         }
     }
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!city.length) {
@@ -54,13 +54,14 @@ export default function Search() {
             )
         }
     }
+   
     if (responseInfo.isError) {
-        return(
+        return (
             <div>
-                <h1 style={{color:'red'}}>ERROR !!!! Request Limitation Over</h1>
+                <h1 style={{ color: 'red' }}>ERROR !!!! Request Limitation Over</h1>
             </div>
         )
-    }else if (responseInfo.isSuccess){
+    } else if (responseInfo.isSuccess) {
         return (
             <div>
                 <Form onSubmit={e => { handleSubmit(e) }} className='autocompletetext'>
@@ -75,10 +76,10 @@ export default function Search() {
                 </div>
             </div>
         )
-    }else{
-        return(
+    } else {
+        return (
             <div>Loading...</div>
         )
     }
-    
+
 }

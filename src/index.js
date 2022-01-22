@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { store } from './app/store'
 
 ReactDOM.render(
-  <BrowserRouter basename='https://trediagaurav.github.io/weatherForecast'>
+  <BrowserRouter>
       <Provider store={store}>
         <App />
       </Provider>
