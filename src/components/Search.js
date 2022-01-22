@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { IoSearch } from 'react-icons/io5';
 import Weather from './Weather';
