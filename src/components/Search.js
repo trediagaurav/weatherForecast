@@ -13,10 +13,7 @@ export default function Search() {
     const [suggestion, setsuggestion] = useState([])
     const responseInfo = useGetAllPostQuery()
     const cityData = responseInfo.data
-    if (responseInfo.isSuccess) {
-        console.log("citydata fetch", cityData)
-    }
-    
+   
 
     const handleChange = async (e) => {
         setcity(e.target.value)
