@@ -26,7 +26,7 @@ function App() {
         </div>
       <Routes>
         <Route path="/" exactly element={<Home />} />
-        <Route path="/favorite" element={<Fav />} />
+        <Route path="/weatherForecast/favorite" element={<Fav />} />
         <Route path="/*" element={<Home />} />
       </Routes>
     </div>
