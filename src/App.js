@@ -24,7 +24,7 @@ function App() {
                 <span className="slider round"></span>
             </label>  
         </div>
-      <Routes basename='/weatherForecast'>
+      <Routes>
         <Route path="/" exactly element={<Home />} />
         <Route path="/favorite" element={<Fav />} />
         <Route path="/*" element={<Home />} />
