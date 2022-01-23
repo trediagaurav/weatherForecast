@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {memo} from 'react';
 import { Card } from 'react-bootstrap';
 import { useGetforecastClimateQuery } from '../services/Post';
 import '../css/forecast.css';
 import moment from 'moment';
 
-export default function DisplayForecast(props) {
+function DisplayForecast(props) {
     const responseInfo = useGetforecastClimateQuery(props.data)
     
     if (responseInfo.isSuccess) {
@@ -50,3 +50,4 @@ export default function DisplayForecast(props) {
         )
     }
 }
+export default memo(DisplayForecast)

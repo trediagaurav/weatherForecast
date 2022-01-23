@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import { Button, Alert } from 'react-bootstrap';
 import { useGetCurrentClimateQuery } from '../services/Post';
 import DisplayForecast from './DisplayForecast';
@@ -126,4 +126,4 @@ function Weather(props) {
     }
 }
 
-export default Weather
+export default memo(Weather)
