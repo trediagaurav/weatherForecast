@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Form } from 'react-bootstrap';
+import { Alert, Form } from 'react-bootstrap';
 import { IoSearch } from 'react-icons/io5';
 import Weather from './Weather';
 import '../css/search.css'
@@ -8,6 +8,7 @@ import { useGetAllPostQuery } from '../services/Post';
 
 export default function Search() {
     const [city, setcity] = useState('');
+    const [alert, setAlert] = useState(false);
     const [key, setKey] = useState('215854');
     const [value, setValue] = useState('Tel-Aviv')
     const [suggestion, setsuggestion] = useState([])
@@ -32,7 +33,10 @@ export default function Search() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!city.length) {
-            alert("Please type the city")
+            setAlert(true)
+            setTimeout(() => {
+                setAlert(false)
+            }, 3000);
         }
         var data = await cityData[cityData.map(function (item, i) {
             return item.LocalizedName;
@@ -63,7 +67,10 @@ export default function Search() {
         )
     } else if (responseInfo.isSuccess) {
         return (
-            <div>
+            <div >
+                <div  className="container d-flex align-items-center">
+                {alert && <Alert variant='danger'>Please type the city</Alert>}
+                </div>
                 <Form onSubmit={e => { handleSubmit(e) }} className='autocompletetext'>
                     {<Form.Group controlId="formGridState" className="searchBar w-50 container d-flex position-relative align-items-center">
                         <IoSearch type="submit" value="Submit" onClick={handleSubmit} size={30} className='search' />

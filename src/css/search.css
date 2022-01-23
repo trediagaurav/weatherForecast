@@ -34,3 +34,6 @@ form.autocompletetext {
 .autocompletetext li:hover {
     background-color: #ebecf0
 }
+.alert-danger{
+    width: 42vw;
+}

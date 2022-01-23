@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Alert } from 'react-bootstrap';
 import { useGetCurrentClimateQuery } from '../services/Post';
 import DisplayForecast from './DisplayForecast';
 
 function Weather(props) {
     const [favorite, setFavorite] = useState([]);
+    const [alert, setAlert] = useState(false);
+    const [addAlert, setAddAlert] = useState(false);
     const responseInfo = useGetCurrentClimateQuery(props.data)
-    
+
     useEffect(() => {
         if (favorite.length) {
             localStorage.setItem('climate', JSON.stringify(favorite));
@@ -29,16 +31,30 @@ function Weather(props) {
             const newData = { city: props.cityData, tempC: currentData.Temperature.Metric.Value, tempF: currentData.Temperature.Imperial.Value, icon: currentData.WeatherIcon }
             if (!data.find((item) => item.city === props.cityData)) {
                 setFavorite([...data, newData])
+                setAddAlert(true)
+                setTimeout(() => {
+                    setAddAlert(false)
+                }, 3000);
             } else {
-                alert("already added")
+                setAlert(true)
+                setTimeout(() => {
+                    setAlert(false)
+                }, 3000);
             }
         }
         const post = () => {
             const data = { city: props.cityData, tempC: currentData.Temperature.Metric.Value, tempF: currentData.Temperature.Imperial.Value, icon: currentData.WeatherIcon }
             if (!favorite.find((item) => item.city === props.cityData)) {
                 setFavorite([...favorite, data])
+                setAddAlert(true)
+                setTimeout(() => {
+                    setAddAlert(false)
+                }, 3000);
             } else {
-                alert("already added")
+                setAlert(true)
+                setTimeout(() => {
+                    setAlert(false)
+                }, 3000);
             }
         }
         return (
@@ -73,6 +89,16 @@ function Weather(props) {
                                     <Button variant="outline-success" onClick={fav}>Add Favorite</Button>
                                 </div>
                             </div>
+                            <div className='row'>
+                                <div className="col position-relative">
+                                    {alert && <Alert variant='warning' className="position-absolute" style={{ right: 0, top: 5 }}> Already Added !!!</Alert>}
+                                </div>
+                            </div>
+                            <div className='row'>
+                                <div className="col position-relative">
+                                    {addAlert && <Alert variant='success' className="position-absolute" style={{ right: 0, top: 5 }}> City Added!!!</Alert>}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -85,10 +111,10 @@ function Weather(props) {
             </div>
         )
 
-    }else if (responseInfo.isError) {
-        return(
+    } else if (responseInfo.isError) {
+        return (
             <div>
-                <h3 style={{color:'red'}}>ERROR !!!! Request Limitation Over</h3>
+                <h3 style={{ color: 'red' }}>ERROR !!!! Request Limitation Over</h3>
             </div>
         )
     } else {
