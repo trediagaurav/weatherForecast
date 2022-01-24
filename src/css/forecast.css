@@ -6,6 +6,8 @@
 }
 .fav{
 	background-color: var(--background);
+	min-height: 100vh;
+    height: auto;
 }
 @media only screen and (max-width: 516px) {
 	.fav-col{
