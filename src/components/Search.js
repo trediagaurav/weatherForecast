@@ -17,19 +17,34 @@ export default function Search() {
 
 
     const handleChange = async (e) => {
-        setcity(e.target.value)
+       setcity(e.target.value)
         if (responseInfo.isSuccess) {
             const newCityData = await cityData.map((names, i) => {
                 return names.LocalizedName
             })
             const regex = await new RegExp(`^${e.target.value}`, `i`);
             const suggestion = await newCityData.sort().filter(v => regex.test(v));
+            console.log("suggestion", suggestion)
             await setsuggestion(suggestion)
         } else {
             handleChange()
         }
     }
-
+    const renderSuggestions = () => {
+        if (city.length) {
+            console.log("city", city)
+            return (
+                <ul>
+                    {suggestion.map((item, i) => <li key={i} onClick={() => suggestionSelected(item)}>{item}</li>)}
+                </ul>
+            )
+        }
+    }
+    const suggestionSelected = (value) => {
+        console.log("values", value)
+        setcity(value)
+        setsuggestion([])
+    }
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!city.length) {
@@ -45,20 +60,7 @@ export default function Search() {
         setKey(keyData)
         setValue(city)
     }
-    const suggestionSelected = (value) => {
-        setcity(value)
-        setsuggestion([])
-    }
-    const renderSuggestions = () => {
-        if (city.length) {
-            return (
-                <ul>
-                    {suggestion.map((item, i) => <li key={i} onClick={() => suggestionSelected(item)}>{item}</li>)}
-                </ul>
-            )
-        }
-    }
-   
+       
     if (responseInfo.isError) {
         return (
             <div>
