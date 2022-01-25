@@ -24,7 +24,6 @@ export default function Search() {
             })
             const regex = await new RegExp(`^${e.target.value}`, `i`);
             const suggestion = await newCityData.sort().filter(v => regex.test(v));
-            console.log("suggestion", suggestion)
             await setsuggestion(suggestion)
         } else {
             handleChange()
@@ -32,7 +31,6 @@ export default function Search() {
     }
     const renderSuggestions = () => {
         if (city.length) {
-            console.log("city", city)
             return (
                 <ul>
                     {suggestion.map((item, i) => <li key={i} onClick={() => suggestionSelected(item)}>{item}</li>)}
@@ -41,7 +39,6 @@ export default function Search() {
         }
     }
     const suggestionSelected = (value) => {
-        console.log("values", value)
         setcity(value)
         setsuggestion([])
     }

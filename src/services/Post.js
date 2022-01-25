@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-const API_KEY = 'f5anTExAZnU88DBJMGjGG49T4i9fq0SS';
+const API_KEY = 'png7TGIfWZoj9YGzyYxF6ib0rH0emxfs';
 
 export const postApi = createApi({
 
